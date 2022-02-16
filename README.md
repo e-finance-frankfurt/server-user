@@ -1,4 +1,4 @@
-# server-public
+# server-user
 
 Our server is used by multiple students and researchers associated with the chair of e-Finance of Prof. Gomber. The server resources are shared among those users. Therefore, please use resources such as CPU, RAM and GPU carefully so that all users get the best possible performance. The following guidelines can help you avoid unnecessary resource consumption.
 
