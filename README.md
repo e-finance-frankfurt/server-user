@@ -20,7 +20,7 @@ Below, we will describe the on-boarding process in detail.
 
 4. It is then time to have a look into the [user-manual](user-manual) that will hopefully answer all of your questions. Since you are working on a high-performance computing machine that allows for massive parallelization, we provide you with [examples](user-manual/examples) that will help you write better and more efficient code. In comparison to your private machine, please understand that your program will not run much faster on this machine if your code is not optimized for parallelization!
 
-5. In some cases, we require that you utilize the [user-lib](user-lib), e.g. when it comes to gpu-enabled jobs. In other cases, it will provide you with useful functionality that makes life on the JupyterHub much easier. 
+5. In some cases, we require that you utilize the [user-lib](user-lib), e.g. when it comes to GPU-enabled jobs. In other cases, it will provide you with useful functionality that makes life on the JupyterHub much easier. 
 
 6. Lastly, we encourage you to subscribe to our **message feed** that connects admins (inform about downtime, require user action) and users (ask questions, report issues), allowing for a better overall experience through a speed-up in communication. See [user-feed](user-feed) for more details on the message feed. Should you run into any issues, please do not hesitate to contact us via message feed (preferred) or via e-mail (contact information below).
 
