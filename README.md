@@ -64,6 +64,10 @@ Please use resources such as CPU, GPU, and memory carefully so that all users ge
 
 ## Contact
 
-[Tino Cestonaro](mailto:cestonaro@wiwi.uni-frankfurt.de?subject=[GitHub]%20server-user%20repository)
+The e-Finance server landscape is administrated by Tino Cestonaro and Jonas De Paolis. Please feel free to contact us via e-mail. 
 
-[Jonas De Paolis](mailto:depaolis@wiwi.uni-frankfurt.de?subject=[GitHub]%20server-user%20repository)
+[Tino Cestonaro](mailto:cestonaro@wiwi.uni-frankfurt.de?subject=[GitHub]%20server-user%20repository) - research assistant @ chair of e-Finance
+
+[Jonas De Paolis](mailto:depaolis@wiwi.uni-frankfurt.de?subject=[GitHub]%20server-user%20repository) - research assistant @ chair of e-Finance
+
+
