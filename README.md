@@ -36,7 +36,7 @@ Please use resources such as CPU, RAM and GPU carefully so that all users get th
 
 2. Terminate kernels that you do not require anymore. Although we use a kernel culling mechanism to release bound resources after a pre-defined period of kernel inactivity, you will help us optimize resource usage if you take action yourself. 
 
-3. Shutdown your server after finishing your work. Although we use a server culling mechanism to shut down the kubernetes pods running your server, you will help us optimize resource usage if you take action yourself. 
+3. Shutdown your server after finishing your work. Although we use a server culling mechanism to shut down the kubernetes pods running your server after a pre-defined period of user inactivity, you will help us optimize resource usage if you take action yourself. 
 
 5. When using a gpu, we need you to *always* use the `lib.gpu.GpuManager` provided as part of the [user-lib](user-lib). This is to make sure that you do not crash gpu-enabled jobs of other users (they will not be happy). Although you theoretically could - do *not* work around this solution! 
 
