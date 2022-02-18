@@ -1,6 +1,6 @@
 # server-user
 
-The chair of e-Finance held by Prof. Gomber provides associated researchers and students with the compute resources necessary for data-driven research at scale. 
+The chair of e-Finance held by Prof. Gomber provides associated researchers and students with the compute resources and data necessary for data-driven research at scale. 
 
 This user repository includes both documentation and utility software for the e-Finance server landscape.
 
