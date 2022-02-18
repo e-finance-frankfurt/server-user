@@ -46,7 +46,7 @@ Please use resources such as CPU, GPU, and memory carefully so that all users ge
 
 ## Environments
 
-**aime.** SOTA compute server with GPU support that is used primarily for research (data science, deep learning, ...), but also for teaching (theses, seminars, ...). 
+**Aime.** SOTA compute server with GPU support that is used primarily for research (data science, deep learning, ...), but also for teaching (theses, seminars, ...). 
 
 \- available via browser at [141.2.183.111](http://141.2.183.111/) (only from within the university network) <br />
 \- ... <br />
@@ -56,7 +56,7 @@ Please use resources such as CPU, GPU, and memory carefully so that all users ge
 }
 ```
 
-**fama.** Older compute server that is used primarily for teaching (theses, seminars, ...). 
+**Fama.** Older compute server that is used primarily for teaching (theses, seminars, ...). 
 
 \- available via browser at [141.2.183.118](http://141.2.183.118/) (only from within the university network) <br />
 \- ... <br />
