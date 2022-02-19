@@ -4,6 +4,8 @@
 
 In this chapter, we will briefly describe how to navigate the hub control panel. 
 
+![1_1_login.gif](_files/1_1_login.gif)
+
 ### 1.1&nbsp; Logging in
 
 If you have been invited to use our compute servers, you have also been provided with `<user-name>` and `<ip-address>`. Using these credentials, you will be able to log in to the jupyter **hub** (hub control panel). 
@@ -18,7 +20,7 @@ To log in to the jupyter hub, ...
 
 > Please make your first **login** as soon as possible, given that you yourself will need to set your password. Neither will you be provided with an initial password, nor will you be able to change an already set password later on - whatever string you type in during your first login will remain your password!
 
-![1_1_login.gif](_files/1_1_login.gif)
+![1_2_server.gif](_files/1_2_server.gif)
 
 ### 1.2&nbsp; Starting a Jupyter Server
 
@@ -40,7 +42,7 @@ To create and start an additional **named server** ...
 3. Select an environment (see chapter 1.3).
 4. Click on the `start` button.
 
-![1_2_server.gif](_files/1_2_server.gif)
+![1_3_environment.gif](_files/1_3_environment.gif)
 
 ### 1.3&nbsp; Selecting an Environment
 
@@ -56,7 +58,7 @@ In your choice, please consider the following ...
 
 > Note that user names with `stud_` prefix will *not* have access to the GPU-enabled image option(s) `[deep_learning]` as well as the larger resource options(s) `[large, extra_large]`. Those students that *do* require access to those resources are assigned a user name *without* `stud_` prefix. 
 
-![1_3_environment.gif](_files/1_3_environment.gif)
+
 
 
 
