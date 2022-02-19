@@ -7,6 +7,7 @@ In this chapter, we will briefly describe how to navigate the hub control panel.
 <br />
 
 ![1_1_login.gif](_files/1_1_login.gif)
+Logging in
 
 ### 1.1&nbsp; Logging in
 
@@ -25,6 +26,7 @@ To log in to the jupyter hub, ...
 <br />
 
 ![1_2_server.gif](_files/1_2_server.gif)
+Starting a server
 
 ### 1.2&nbsp; Starting a Jupyter Server
 
@@ -49,6 +51,7 @@ To create and start an additional **named server** ...
 <br />
 
 ![1_3_environment.gif](_files/1_3_environment.gif)
+Selecting an environment
 
 ### 1.3&nbsp; Selecting an Environment
 
