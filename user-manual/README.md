@@ -8,6 +8,8 @@ In this chapter, we will briefly describe how to navigate the hub control panel.
 
 ### 1.1&nbsp; Logging in
 
+> Please make your first **login** as soon as possible, given that you yourself will need to set your password. Neither will you be provided with an initial password, nor will you be able to change an already set password later on - whatever string you type in during your first login will remain your password!
+
 If you have been invited to use our compute servers, you have also been provided with `<user-name>` and `<ip-address>`. Using these credentials, you will be able to log in to the jupyter **hub** (hub control panel). 
 
 To log in to the jupyter hub, ...
@@ -18,11 +20,13 @@ To log in to the jupyter hub, ...
 4. Click on the `sign in` button, leading you directly to the server options page for your default server.
 5. Click on the `home` tab, leading you to the hub control panel.
 
-> Please make your first **login** as soon as possible, given that you yourself will need to set your password. Neither will you be provided with an initial password, nor will you be able to change an already set password later on - whatever string you type in during your first login will remain your password!
+
 
 ![1_2_server.gif](_files/1_2_server.gif)
 
 ### 1.2&nbsp; Starting a Jupyter Server
+
+> Having started a jupyter server, you will be able to use multiple Python (R, Julia, ...) **kernels** to run multiple programs at the same time, please understand that you do *not* need multiple jupyter servers! While we allow that you set up a second jupyter server (named server), please also understand that this will not help you lift resource limits as those are defined on a per-user basis. Use named servers *only* as a means to better organize your code base! 
 
 Having logged in, you will be able to start a jupyter **server** (user instance), either your *default server* or a *named server*. 
 
@@ -32,8 +36,6 @@ To start your **default server**, ...
 2. Click on `start my server`, leading you to the server options page.
 3. Select an environment (see chapter 1.3).
 4. Click on the `start` button.
-
-> Having started a jupyter server, you will be able to use multiple Python (R, Julia, ...) **kernels** to run multiple programs at the same time, please understand that you do *not* need multiple jupyter servers! While we allow that you set up a second jupyter server (named server), please also understand that this will not help you lift resource limits as those are defined on a per-user basis. Use named servers *only* as a means to better organize your code base! 
 
 To create and start an additional **named server** ...
 
@@ -46,6 +48,8 @@ To create and start an additional **named server** ...
 
 ### 1.3&nbsp; Selecting an Environment
 
+> Note that user names with `stud_` prefix will *not* have access to the GPU-enabled image option(s) `[deep_learning]` as well as the larger resource options(s) `[large, extra_large]`. Those students that *do* require access to those resources are assigned a user name *without* `stud_` prefix. 
+
 Depending on your user name, the JupyterHub will give you different configuration options to choose from. 
 
 Please small as possible, large as necessary
@@ -56,7 +60,7 @@ In your choice, please consider the following ...
 2. How much memory will you need? 
 3. Do you require GPU support?
 
-> Note that user names with `stud_` prefix will *not* have access to the GPU-enabled image option(s) `[deep_learning]` as well as the larger resource options(s) `[large, extra_large]`. Those students that *do* require access to those resources are assigned a user name *without* `stud_` prefix. 
+
 
 
 
