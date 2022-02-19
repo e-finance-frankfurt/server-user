@@ -1,8 +1,8 @@
 # user-manual
 
-## 1 Jupyter Hub
+## 1&nbsp; Jupyter Hub
 
-### 1.1 Login
+### 1.1&nbsp; Login
 
 If you have been invited to use our compute servers, you have also been provided with `<user-name>` and `<ip-address>`. 
 
@@ -14,13 +14,13 @@ If you have been invited to use our compute servers, you have also been provided
 
 ![1_1_login.gif](media/1_1_login.gif)
 
-### 1.2 Starting a Jupyter Server
+### 1.2&nbsp; Starting a Jupyter Server
 
 ... also named servers
 
 ![1_2_server.gif](media/1_2_server.gif)
 
-### 1.3 Selecting an Environment
+### 1.3&nbsp; Selecting an Environment
 
 
 
@@ -28,15 +28,15 @@ If you have been invited to use our compute servers, you have also been provided
 
 
 
-## 2 Jupyter Server
+## 2&nbsp; Jupyter Server
 
 In this chapter, we will describe all of the building blocks that make up your Jupyter Server environment. 
 
-### 2.1 User Interface Options
+### 2.1&nbsp; User Interface Options
 
 You are provided with two user interface options, Jupyter Lab and Jupyter Notebook. 
 
-#### 2.1.1 Jupyter Lab (default)
+#### 2.1.1&nbsp; Jupyter Lab (default)
 
 ![2_1_lab.png](media/2_1_lab.png)
 
@@ -48,7 +48,7 @@ The Jupyter Lab user inteface allows for different ways of running your code. Bo
 
 The Jupyter Lab user interface allows you to open and display a variety of text file formats (.py, .txt, .csv, .json, ...). This can be especially useful if you are trying to display a large .csv file that you would otherwise never be able to fit into memory. 
 
-#### 2.1.2 Jupyter Notebook
+#### 2.1.2&nbsp; Jupyter Notebook
 
 ![2_2_notebook.png](media/2_2_notebook.png)
 
@@ -56,105 +56,105 @@ The alternative user interface for the jupyter server is the [Jupyter Notebook](
 
 The Jupyter Notebook user interface is much more light-weight. The `Files` tab allows you to browse, upload, create, and delete files (including notebooks). The `Running` tab allows you to monitor and shutdown running notebooks and terminals. 
 
-### 2.2 Kernel options
+### 2.2&nbsp; Kernel options
 
 You are provided with one or more kernel options, the default being Python. Please understand that, in terms of maintenance, we will not guarantee other options besides Python. 
 
-#### 2.2.1 Python
+#### 2.2.1&nbsp; Python
 
 
-#### 2.2.2 Other
+#### 2.2.2&nbsp; Other
 
 With some image options (`data-science`, ...), you will also have access to other types of kernels such as [R](...) or [Julia](...). 
 
-### 2.3 Resource options
+### 2.3&nbsp; Resource options
 
-#### 2.3.1 CPU
-#### 2.3.2 Memory
-#### 2.3.3 GPU
-#### 2.3.4 Storage
+#### 2.3.1&nbsp; CPU
+#### 2.3.2&nbsp; Memory
+#### 2.3.3&nbsp; GPU
+#### 2.3.4&nbsp; Storage
 
-### 2.3 Storage options
+### 2.3&nbsp; Storage options
 
-#### 2.3.1 User storage
-#### 4.2.1 `read_only`
-#### 4.2.2 `temp`
+#### 2.3.1&nbsp; User storage
+#### 4.2.1&nbsp; `read_only`
+#### 4.2.2&nbsp; `temp`
 
 
 
-## 3 Workflow
+## 3&nbsp; Workflow
 
 Here, we describe steps for Python. 
 
 > Note that any changes made to the environment will not persist after a restart, given that it is rebuilt every time from a docker image. The data in your user storage, however, *will* persist. 
 
-### 3.1 Runtime options
+### 3.1&nbsp; Runtime options
 
-### 3.1.1 Prototyping via notebook or console
+#### 3.1.1&nbsp; Prototyping via notebook or console
 
-### 3.1.2 Long-running jobs via terminal
+#### 3.1.2&nbsp; Long-running jobs via terminal
 
 ... prevent culling
 ... describe behavior before shutdown
 ... always write to file
 
-### 3.2 Organization options
+### 3.2&nbsp; Organization options
 
-#### 3.2.1 Scripting
+#### 3.2.1&nbsp; Scripting
 
-#### 3.2.2 Modules
+#### 3.2.2&nbsp; Modules
 
-### 3.3 Important steps
+### 3.3&nbsp; Important steps
 
-#### 3.3.1 **Request resources** <--- lieber separaten Punkt draus machen
+#### 3.3.1&nbsp; **Request resources** <--- lieber separaten Punkt draus machen
 
-#### 3.3.2 Import modules
+#### 3.3.2&nbsp; Import modules
 
-#### 3.3.3 Load input data
+#### 3.3.3&nbsp; Load input data
 ... see also 4.1 I/O
 
-#### 3.3.4 Perform computations
+#### 3.3.4&nbsp; Perform computations
 ... refer to 4.2 Compute
 
-#### 3.3.5 Monitor computations
+#### 3.3.5&nbsp; Monitor computations
 
-#### 3.3.5 Save output data
+#### 3.3.6&nbsp; Save output data
 ... results
 
 
 
-## 4 Optimized Python
+## 4&nbsp; Optimized Python
 
-### 4.1 I/O
+### 4.1&nbsp; I/O
 
 use datatable settings to prevent using all threads!
 
-#### 4.1.1 Reading data
+#### 4.1.1&nbsp; Reading data
 
 ... datatable
 `dt.fread().to_pandas()`
 dt.iread()
 
-#### 4.1.2 Writing
+#### 4.1.2&nbsp; Writing
 `dt.Frame(df).to_csv(path, compression="gzip")`
 
 
-### 4.2 Compute
+### 4.2&nbsp; Compute
 
-#### 4.1.1 Naïve approach via multiple kernels
+#### 4.1.1&nbsp; Naïve approach via multiple kernels
 
-#### 4.1.2 Multi-threading and multi-processing
+#### 4.1.2&nbsp; Multi-threading and multi-processing
 
-#### 4.1.3 GPU-enabled Python
-
-
-### 4.3 Memory
-
-#### 4.3.1 Generator for larger-than-memory data
+#### 4.1.3&nbsp; GPU-enabled Python
 
 
+### 4.3&nbsp; Memory
 
-## 5 Where to go from here?
+#### 4.3.1&nbsp; Generator for larger-than-memory data
+
+
+
+## 5&nbsp; Where to go from here?
 
 
 
