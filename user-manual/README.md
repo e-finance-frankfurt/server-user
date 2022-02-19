@@ -2,19 +2,6 @@
 
 ## 1 Jupyter Hub
 
-<table>
-  <tr>
-    <td>First Screen Page</td>
-     <td>Holiday Mention</td>
-     <td>Present day in purple and selected day in pink</td>
-  </tr>
-  <tr>
-    <td><img src="media/1_1_login.gif" width=270 height=480></td>
-    <td><img src="media/1_1_login.gif" width=270 height=480></td>
-    <td><img src="media/1_1_login.gif" width=270 height=480></td>
-  </tr>
- </table>
-
 ### 1.1 Login
 
 If you have been invited to use our compute servers, you have also been provided with `<user-name>` and `<ip-address>`. 
@@ -23,7 +10,7 @@ If you have been invited to use our compute servers, you have also been provided
 
 *2. Enter your `<user-name>`.*
 
-*3. Enter your password
+*3. Enter your password*
 
 ![1_1_login.gif](media/1_1_login.gif)
 
