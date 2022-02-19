@@ -4,9 +4,8 @@
 
 In this chapter, we will briefly describe how to navigate the hub control panel. 
 
-
-
 <br />
+
 ![1_1_login.gif](_files/1_1_login.gif)
 
 ### 1.1&nbsp; Logging in
@@ -23,9 +22,8 @@ To log in to the jupyter hub, ...
 4. Click on the `sign in` button, leading you directly to the server options page for your default server.
 5. Click on the `home` tab, leading you to the hub control panel.
 
-
-
 <br />
+
 ![1_2_server.gif](_files/1_2_server.gif)
 
 ### 1.2&nbsp; Starting a Jupyter Server
@@ -48,9 +46,8 @@ To create and start an additional **named server** ...
 3. Select an environment (see chapter 1.3).
 4. Click on the `start` button.
 
-
-
 <br />
+
 ![1_3_environment.gif](_files/1_3_environment.gif)
 
 ### 1.3&nbsp; Selecting an Environment
