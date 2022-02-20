@@ -50,6 +50,54 @@ Please use resources such as CPU, GPU, and memory responsibly so that all users 
 
 ```json
 {
+    "plain_vanilla": {
+        "display_name": "Plain Vanilla Environment",
+        "description": "For simple jobs that do not require additional frameworks. Based on jupyter/base-notebook:6e246ea4bbff docker image.",
+        "kubespawner_override": {
+            "image": "jupyter/base-notebook:6e246ea4bbff",
+        },
+    },
+    "data_science": {
+        "display_name": "Data Science Environment",
+        "description": "For CPU-based data science jobs. Based on jupyter/datascience-notebook:92ce0af9989f docker image.",
+        "kubespawner_override": {
+            "image": "jupyter/datascience-notebook:92ce0af9989f",
+        },
+    },
+    "deep_learning": {
+        "display_name": "Deep Learning Environment",
+        "description": "For GPU-accelerated deep learning jobs (A100). Based on cschranz/gpu-jupyter:latest docker image.",
+        "kubespawner_override": {
+            "image": "cschranz/gpu-jupyter:latest",
+        },
+    },
+}
+
+{
+    "small": {
+        "cpu_limit": 1,
+        "cpu_guarantee": 0.5,
+        "mem_limit": "16G",
+        "mem_guarantee": "0.5G",
+    },
+    "medium": {
+        "cpu_limit": 2,
+        "cpu_guarantee": 0.5,
+        "mem_limit": "32G",
+        "mem_guarantee": "0.5G",
+    },
+    "large": {
+        "cpu_limit": 12,
+        "cpu_guarantee": 1,
+        "mem_limit": "64G",
+        "mem_guarantee": "1G",
+    },
+    "extra_large": {
+        "cpu_limit": 24,
+        "cpu_guarantee": 1,
+        "mem_limit": "192G",
+        "mem_guarantee": "1G",
+    },
 }
 ```
 
@@ -57,6 +105,28 @@ Please use resources such as CPU, GPU, and memory responsibly so that all users 
 
 ```json
 {
+    "data_science": {
+        "display_name": "Data Science Environment",
+        "description": "For CPU-based data science jobs. Based on jupyter/datascience-notebook:92ce0af9989f docker image.",
+        "kubespawner_override": {
+            "image": "jupyter/datascience-notebook:92ce0af9989f",
+        },
+    },
+}
+
+{
+    "small": {
+        "cpu_limit": 1,
+        "cpu_guarantee": 0.5,
+        "mem_limit": "12G",
+        "mem_guarantee": "0.5G",
+    },
+    "medium": {
+        "cpu_limit": 2,
+        "cpu_guarantee": 0.5,
+        "mem_limit": "24G",
+        "mem_guarantee": "0.5G",
+    },
 }
 ```
 
