@@ -184,13 +184,31 @@ When you start writing code, you would typically start with the following steps.
 
 #### 3.3.1&nbsp; **Request resources** <--- lieber separaten Punkt draus machen
 
-**Important:** If you have access to a GPU and want to use it, *always* put at the top of your program .........
+**Important:** If you have access to a GPU and want to use it, you must *always* make a request at the top of your program, checking if your requested resources are available and to prevent your program from potentially crashing another user's job that may already have been running for days (they will not be happy)! 
 
 #### 3.3.2&nbsp; Import modules
 
 Next, you will want to import other modules. (...)
 
 #### 3.3.3&nbsp; Load input data
+
+Your first *actual* processing step will typically be to load data. 
+
+Most of the time, you will use the Python library [pandas](https://pandas.pydata.org/) to read in a variety of file types (`.csv`, `.json`, `.h5`, ...) and store the contents in a so-called `pd.DataFrame` (`df`). For a simple `.csv` (`.csv.gz` if gzipped) file, you will want to use the `pd.read_csv` function: 
+
+```python
+df = pd.read_csv(
+    path,
+    ...,
+)
+```
+
+If you want to use vanilla python, you could also simply read in a file line-by-line using the ..... function: 
+
+```python
+
+```
+
 ... see also 4.1 I/O
 
 #### 3.3.4&nbsp; Perform computations
@@ -215,7 +233,7 @@ use datatable settings to prevent using all threads!
 `dt.fread().to_pandas()`
 dt.iread()
 
-#### 4.1.2&nbsp; Writing
+#### 4.1.2&nbsp; Writing data
 `dt.Frame(df).to_csv(path, compression="gzip")`
 
 
