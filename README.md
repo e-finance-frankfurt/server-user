@@ -46,9 +46,12 @@ Please use resources such as CPU, GPU, and memory responsibly so that all users 
 
 ## Environments
 
+Listed below are the current image and resource options available for each server. 
+
 **Aime.** SOTA compute server with GPU support that is used primarily for research (data science, deep learning, ...), but also for teaching (theses, seminars, ...). 
 
 ```json
+# image options
 {
     "plain_vanilla": {
         "display_name": "Plain Vanilla Environment",
@@ -73,6 +76,7 @@ Please use resources such as CPU, GPU, and memory responsibly so that all users 
     },
 }
 
+# resource options
 {
     "small": {
         "cpu_limit": 1,
@@ -103,6 +107,7 @@ Please use resources such as CPU, GPU, and memory responsibly so that all users 
 
 **Fama.** Older compute server that is used primarily for teaching (theses, seminars, ...). 
 
+Image options: 
 ```json
 {
     "data_science": {
@@ -113,7 +118,10 @@ Please use resources such as CPU, GPU, and memory responsibly so that all users 
         },
     },
 }
+```
 
+Resource options:
+```json
 {
     "small": {
         "cpu_limit": 1,
