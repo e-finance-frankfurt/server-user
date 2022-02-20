@@ -30,7 +30,7 @@ Below, we will describe the on-boarding process in detail.
 
 ## Guidelines
 
-Please use resources such as CPU, GPU, and memory carefully so that all users get the best possible performance. The following guidelines can help you avoid unnecessary resource consumption.
+Please use resources such as CPU, GPU, and memory responsibly so that all users get the best possible performance. The following guidelines can help you avoid unnecessary resource consumption.
 
 1. With regard to the available resource options, select the environment for your jupyter server to be as small as possible (as large as necessary). 
 

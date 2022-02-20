@@ -50,31 +50,11 @@ To create and start an additional **named server** ...
 
 ![1_3_environment.gif](_files/1_3_environment.gif)
 
-
 ### 1.3&nbsp; Selecting an Environment
 
 > Note that user names with `stud_` prefix will *not* have access to the GPU-enabled image option(s) `[deep_learning]` as well as the larger resource options(s) `[large, extra_large]`. Those students that *do* require access to those resources are assigned a user name *without* `stud_` prefix. 
 
-Depending on your user name, the JupyterHub will give you different configuration options to choose from. 
-
-Please small as possible, large as necessary
-
-In your choice, please consider the following ...
-
-1. How many cpu threads will you ......
-2. How much memory will you need? 
-3. Do you require GPU support?
-
-
-
-
-
-
-
-
-
-
-
+Depending on your user name, the JupyterHub will give you different configuration options to choose from. Remember to choose your environment as small as possible (as large as necessary). 
 
 
 
@@ -112,23 +92,40 @@ You are provided with one or more kernel options, the default being Python. Plea
 
 #### 2.2.1&nbsp; Python
 
+With all image options, you will have access to a Python 3.x kernel. Therefore, when working on your Jupyter Server, you will mainly use Python. (...)
 
 #### 2.2.2&nbsp; Other
 
-With some image options (`data-science`, ...), you will also have access to other types of kernels such as [R](...) or [Julia](...). 
+With some image options (`data-science`, ...), you will also have access to other types of kernels such as [R](https://www.r-project.org/about.html) or [Julia](https://julialang.org/). (...)
 
 ### 2.3&nbsp; Resource options
 
+> While lots of resources are cool (we think so, too), please understand that you should take only as much as you can *actually* utilize (as much as you will *actually* need) in order to avoid overhead in resource consumption. 
+
+Underlying your Jupyter Server are powerful computing resources that are shared among all user instances. In this regard, learning how to optimize your code is paramount (see chapter 4).
+
 #### 2.3.1&nbsp; CPU
-#### 2.3.2&nbsp; Memory
-#### 2.3.3&nbsp; GPU
-#### 2.3.4&nbsp; Storage
+
+A typical Python program is single-threaded, that is, it uses only *half* of a single central processing unit (CPU) core. Consequently, chances are you may not even require multiple CPU cores. 
+In a data-driven setting, however, a multi-threaded Python program will significantly speed up your workflow.  
+
+#### 2.3.2&nbsp; GPU
+
+A graphics processing unit (GPU) can be used for massively parallelized tasks, including (but not limited to) deep learning. 
+
+#### 2.3.3&nbsp; RAM
+
+On the one hand, CPU and GPU implement high-bandwith yet low-capacity memory, allowing for *extremely* fast data access (TB/s range) at the cost of size (MB range). On the other hand, solid state drive (SSD) and hard disk drive (HDD) represent high-capacity yet low-bandwith memory, allowing for large data storage (terabyte range) at the cost of speed (MB/s range). 
+In the middle of this tiered formation, random access memory (RAM) is the sweet-spot in this trade-off. With regard to runtime, efficient memory utilization is one of the most important, if not *the* most important prerequisite to writing a fast program.  
 
 ### 2.3&nbsp; Storage options
 
+You are provided with three storage options. 
+
 #### 2.3.1&nbsp; User storage
-#### 4.2.1&nbsp; `read_only`
 #### 4.2.2&nbsp; `temp`
+#### 4.2.1&nbsp; `read_only`
+
 
 
 
