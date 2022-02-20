@@ -52,7 +52,7 @@ To create and start an additional **named server** ...
 
 ### 1.3&nbsp; Selecting an Environment
 
-> Note that user names with `stud_` prefix will *not* have access to the GPU-enabled image option(s) `[deep_learning]` as well as the larger resource options(s) `[large, extra_large]`. Those students that *do* require access to those resources are assigned a user name *without* `stud_` prefix. 
+> Note that user names with `stud_` prefix will *not* have access to the GPU-enabled image option(s) `[deep_learning]` as well as the larger resource options(s) `[large, extra_large]`. Students that *do* require access to those resources are assigned a user name *without* `stud_` prefix. 
 
 Depending on your user name, the JupyterHub will give you different configuration options to choose from. Remember to choose your environment as small as possible (as large as necessary). 
 
