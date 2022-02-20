@@ -227,6 +227,28 @@ If you want to use vanilla python, you could also simply read in a file line-by-
 
 use datatable settings to prevent using all threads!
 
+For fast I/O, we recommend that you use the [datatable](https://datatable.readthedocs.io/en/latest/) library that supports multi-threaded processing of tabular data. You can install datatable via the package management system `pip` as follows:
+
+```console
+pip install datatable
+```
+
+Note that datatable may not be part of your environment, so you will have to reinstall it everytime you spin up your Jupyter Server. To automate this process, you simply put it in your program. For a regular `.py` file, you would write: 
+
+```python
+import os
+os.system("pip install datatable")
+import datatable as dt
+```
+
+in a notebook:
+
+```python
+!pip install datatable
+import datatable as dt
+```
+
+
 #### 4.1.1&nbsp; Reading data
 
 ... datatable
