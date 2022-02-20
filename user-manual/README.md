@@ -132,7 +132,7 @@ Most of the time, you should use your 100 GB of user storage (internal storage).
 
 #### 2.4.3&nbsp; Read-only storage
 
-> While every user has to sign an non-disclosure agreement (NDA), refer to the [server-data](...) repository to see whether you may use a particular dataset from this drive. 
+> While every user has to sign a non-disclosure agreement (NDA), refer to the [server-data](...) repository to see whether you may use a particular dataset from this drive. 
 
 (optional) Usually, you will want to work with some kind of market data. The `read_only` storage is read-only, meaning that you may always read from this drive, but you do *not* have write permission (do *not* try to delete data). 
 
@@ -150,33 +150,45 @@ Here, we describe a typical workflow for Python.
 
 ### 3.1&nbsp; Runtime options
 
-Ultimately, you have two runtime options, notebook/console (prototyping) and terminal (production). 
+Ultimately, you have two relevant runtime options, **notebook** (prototyping) and **terminal** (production). In addition to that, you may also use a **console**, but we generally do not see the need for using one. 
 
-#### 3.1.1&nbsp; Prototyping jobs via notebook or console
+#### 3.1.1&nbsp; Prototyping jobs via notebook
 
-- write code cell-by-cell
-- good for exploration
-- 
+> Please note that the biggest drawback of the notebook is that your program will stop running if you lose internet connection or accidentally close your browser tab! In general, it is possible to reconnect to the kernel that still holds previous results (in memory), but your current results cannot be recovered! 
+
+The notebook (`.ipynb`) is the ideal runtime for prototyping, allowing you to transform and explore your data step-by-step. Each step is represented by a code cell that can be executed as many times and in any order you want. The notebook is interactive in the sense that every variable can be accessed all the time, allowing you to build your program as you go. Of course you could also write all of your code in a single cell, you could import modules (`.py`) that include part of your code, etc. The main idea is that, after running your code, you will be able to simply continue running your code some more (whereas a normal program would simply terminate). 
 
 #### 3.1.2&nbsp; Production jobs via terminal
 
-- requires that you prepare script
+> Please not that the terminal is the better runtime for long-running production jobs, as it will continue running even when you lose internet connection, accidentally close your browser tab, or simply log out! 
 
-... prevent culling
-... describe behavior before shutdown
-... always write to file
+The terminal is less convenient, you simply run a script (`.py`) that will contain and/or import all the functionality that you need, it is **not interactive** by any means. 
+
+**Important:** Whatever you do, we *always* recommend that you log your results in a `.txt` file and regularly save checkpoints so that you are prepared for any kind of system failure (may always happen)! We recommend using our [library](../library) that includes this type of functionality. 
 
 ### 3.2&nbsp; Organization options
 
+Having decided on your preferred runtime, you need to decide on how to organize your code base. While most users will simply stick to scripting, we encourage you to consider following a more organized approach based on modules.  
+
 #### 3.2.1&nbsp; Scripting
+
+
 
 #### 3.2.2&nbsp; Modules
 
+
+
 ### 3.3&nbsp; Important steps
+
+When you start writing code, you would typically start with the following steps.  
 
 #### 3.3.1&nbsp; **Request resources** <--- lieber separaten Punkt draus machen
 
+**Important:** If you have access to a GPU and want to use it, *always* put at the top of your program .........
+
 #### 3.3.2&nbsp; Import modules
+
+Next, you will want to import other modules. (...)
 
 #### 3.3.3&nbsp; Load input data
 ... see also 4.1 I/O
