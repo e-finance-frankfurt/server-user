@@ -107,6 +107,7 @@ Underlying your Jupyter Server are powerful computing resources that are shared 
 #### 2.3.1&nbsp; CPU
 
 A typical Python program is single-threaded, that is, it uses only *half* of a single central processing unit (CPU) core. Consequently, chances are you may not even require multiple CPU cores. 
+
 In a data-driven setting, however, a multi-threaded Python program will significantly speed up your workflow.  
 
 #### 2.3.2&nbsp; GPU
@@ -116,16 +117,32 @@ A graphics processing unit (GPU) can be used for massively parallelized tasks, i
 #### 2.3.3&nbsp; RAM
 
 On the one hand, CPU and GPU implement high-bandwith yet low-capacity memory, allowing for *extremely* fast data access (TB/s range) at the cost of size (MB range). On the other hand, solid state drive (SSD) and hard disk drive (HDD) represent high-capacity yet low-bandwith memory, allowing for large data storage (terabyte range) at the cost of speed (MB/s range). 
+
 In the middle of this tiered formation, random access memory (RAM) is the sweet-spot in this trade-off. With regard to runtime, efficient memory utilization is one of the most important, if not *the* most important prerequisite to writing a fast program.  
 
-### 2.3&nbsp; Storage options
+### 2.4&nbsp; Storage options
 
 You are provided with three storage options. 
 
-#### 2.3.1&nbsp; User storage
-#### 4.2.2&nbsp; `temp`
-#### 4.2.1&nbsp; `read_only`
+#### 2.4.1&nbsp; User storage
 
+Most of the time, you should use your 100 GB of user storage (internal storage). This is **both the fastest and the safest option**, as user storage is based on an NVMe SSD and can be accessed only by you and the admin. 
+
+#### 2.4.2&nbsp; `temp`
+
+> To keep this drive empty, delete your files on a regular basis. To keep your files safe, always keep a back-up somewhere else. 
+
+(optional) In some cases, you may want to *temporarily* share data with other users. This option is relatively fast as it is based on a regular SSD, but please understand that *every* user has read and write permission for this drive and could therefore easily wipe out all of your data. 
+
+#### 2.4.3&nbsp; `read_only`
+
+> While every user has to sign an non-disclosure agreement (NDA), refer to the `server-data` repository to see whether you may use a particular dataset from this drive. 
+
+(optional) Usually, you will want to work with some kind of market data. This option is read-only, meaning that you may read from this drive, but you do *not* have write permission (do not try to delete data). 
+
+#### 2.4.4%nbsp; Database
+
+TODO: replace the `read_only` storage with a NoSQL database. 
 
 
 
