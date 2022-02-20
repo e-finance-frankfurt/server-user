@@ -82,7 +82,7 @@ The Jupyter Lab user interface allows you to open and display a variety of text 
 
 ![2_2_notebook.png](media/2_2_notebook.png)
 
-The alternative user interface for the jupyter server is the [Jupyter Notebook](https://jupyter-notebook.readthedocs.io/en/latest/), the url being http://`<ip-adress>`/user/`<user-name>`/tree. You can simply switch user interface by changing `/lab` to `/tree`. Note, however, that this switch will not persist when reloading the page, and that we strongly advise you to use Jupyter Lab.  
+The alternative user interface for the jupyter server is the [Jupyter Notebook](https://jupyter-notebook.readthedocs.io/en/latest/), the url being `http://<ip-adress>/user/<user-name>/tree`. You can simply switch to this user interface by replacing `/lab` with `/tree`. Note, however, that this switch will not persist when reloading the page, and that we strongly advise you to use Jupyter Lab.  
 
 The Jupyter Notebook user interface is much more light-weight. The `Files` tab allows you to browse, upload, create, and delete files (including notebooks). The `Running` tab allows you to monitor and shutdown running notebooks and terminals. 
 
@@ -96,7 +96,7 @@ With all image options, you will have access to a Python 3.x kernel. Therefore, 
 
 #### 2.2.2&nbsp; Other
 
-With some image options (`data-science`, ...), you will also have access to other types of kernels such as [R](https://www.r-project.org/about.html) or [Julia](https://julialang.org/). (...)
+With some image options (`data_science`, ...), you will also have access to other types of kernels such as [R](https://www.r-project.org/about.html) or [Julia](https://julialang.org/). (...)
 
 ### 2.3&nbsp; Resource options
 
@@ -128,29 +128,29 @@ You are provided with three storage options.
 
 Most of the time, you should use your 100 GB of user storage (internal storage). This is **both the fastest and the safest option**, as user storage is based on an NVMe SSD and can be accessed only by you and the admin. 
 
-#### 2.4.2&nbsp; `temp`
+#### 2.4.2&nbsp; Temp storage
 
 > To keep this drive empty, delete your files on a regular basis. To keep your files safe, always keep a back-up somewhere else. 
 
-(optional) In some cases, you may want to *temporarily* share data with other users. This option is relatively fast as it is based on a regular SSD, but please understand that *every* user has read and write permission for this drive and could therefore easily wipe out all of your data. 
+(optional) In some cases, you may want to *temporarily* share data with other users. The `temp` storage is relatively fast as it is based on a regular SSD, but please understand that *every* user has read and write permission for this drive and could therefore easily wipe out all of your data. 
 
-#### 2.4.3&nbsp; `read_only`
+#### 2.4.3&nbsp; Read-only storage
 
-> While every user has to sign an non-disclosure agreement (NDA), refer to the `server-data` repository to see whether you may use a particular dataset from this drive. 
+> While every user has to sign an non-disclosure agreement (NDA), refer to the [server-data](...) repository to see whether you may use a particular dataset from this drive. 
 
-(optional) Usually, you will want to work with some kind of market data. This option is read-only, meaning that you may read from this drive, but you do *not* have write permission (do not try to delete data). 
+(optional) Usually, you will want to work with some kind of market data. The `read_only` storage is read-only, meaning that you may always read from this drive, but you do *not* have write permission (do *not* try to delete data). 
 
 #### 2.4.4%nbsp; Database
 
-TODO: replace the `read_only` storage with a NoSQL database. 
+TODO: replace the read-only storage with a NoSQL database. 
 
 
 
 ## 3&nbsp; Workflow
 
-Here, we describe steps for Python. 
-
 > Note that any changes made to the environment will not persist after a restart, given that it is rebuilt every time from a docker image. The data in your user storage, however, *will* persist. 
+
+Here, we describe a typical workflow for Python. 
 
 ### 3.1&nbsp; Runtime options
 
