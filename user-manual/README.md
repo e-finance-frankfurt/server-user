@@ -140,9 +140,9 @@ Most of the time, you should use your 100 GB of user storage (internal storage).
 
 (optional) Usually, you will want to work with some kind of market data. The `read_only` storage is read-only, meaning that you may always read from this drive, but you do *not* have write permission (do *not* try to delete data). 
 
-#### 2.4.4&nbsp; Database
+#### 2.4.4&nbsp; Databases
 
-TODO: replace the read-only storage with a NoSQL database. 
+TODO: replace the read-only storage with a NoSQL databases. 
 
 
 
@@ -154,9 +154,17 @@ Here, we describe a typical workflow for Python.
 
 ### 3.1&nbsp; Runtime options
 
-#### 3.1.1&nbsp; Prototyping via notebook or console
+Ultimately, you have two runtime options, notebook/console (prototyping) and terminal (production). 
 
-#### 3.1.2&nbsp; Long-running jobs via terminal
+#### 3.1.1&nbsp; Prototyping jobs via notebook or console
+
+- write code cell-by-cell
+- good for exploration
+- 
+
+#### 3.1.2&nbsp; Production jobs via terminal
+
+- requires that you prepare script
 
 ... prevent culling
 ... describe behavior before shutdown
