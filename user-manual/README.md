@@ -140,7 +140,7 @@ Most of the time, you should use your 100 GB of user storage (internal storage).
 
 (optional) Usually, you will want to work with some kind of market data. The `read_only` storage is read-only, meaning that you may always read from this drive, but you do *not* have write permission (do *not* try to delete data). 
 
-#### 2.4.4%nbsp; Database
+#### 2.4.4&nbsp; Database
 
 TODO: replace the read-only storage with a NoSQL database. 
 
