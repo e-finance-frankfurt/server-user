@@ -50,8 +50,8 @@ Listed below are the current image and resource options available for each serve
 
 **Aime.** SOTA compute server with GPU support that is used primarily for research (data science, deep learning, ...), but also for teaching (theses, seminars, ...). 
 
+Image options: 
 ```json
-# image options
 {
     "plain_vanilla": {
         "display_name": "Plain Vanilla Environment",
@@ -75,8 +75,10 @@ Listed below are the current image and resource options available for each serve
         },
     },
 }
+```
 
-# resource options
+Resource options:
+```json
 {
     "small": {
         "cpu_limit": 1,
