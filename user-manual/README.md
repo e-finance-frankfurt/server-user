@@ -66,6 +66,10 @@ In this chapter, we will briefly describe all of the building blocks that make u
 
 You are provided with two user interface options, Jupyter Lab and Jupyter Notebook. 
 
+<br />
+
+![2_1_jupyter_lab.png](_files/2_1_jupyter_lab.png)
+
 #### 2.1.1&nbsp; Jupyter Lab (default)
 
 ![2_1_lab.png](media/2_1_lab.png)
@@ -77,6 +81,10 @@ With everything located within a single browser tab, note that you can **split y
 
 The Jupyter Lab user inteface allows for different ways of **running your code**. Both `notebook` and `console` can be used for interactive programming, use the `notebook` runtime if you additionally want to include markdown (see chapter 3.1.1). The `terminal` is less convenient, but it plays an important role when facing long-running jobs (see chapter 3.1.2). 
 The Jupyter Lab user interface allows you to open and **display text files** in a variety of formats (.py, .txt, .csv, .json, ...). This can be especially useful if you are trying to display a large .csv file that you would otherwise never be able to fit into memory. 
+
+<br />
+
+![2_1_jupyter_notebook.png](_files/2_1_jupyter_notebook.png)
 
 #### 2.1.2&nbsp; Jupyter Notebook
 
