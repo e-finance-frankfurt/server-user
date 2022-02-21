@@ -239,9 +239,8 @@ Most of the time, you will want to use the Python library [pandas](https://panda
 
 ```python
 import pandas as pd
-path = "path/to/your/test_file.csv"
 df = pd.read_csv(
-    filepath_or_buffer=path,
+    filepath_or_buffer="path/to/your/test_file.csv",
     parse_dates=["Timestamp_UTC], # parse timestamp string to pd.Timestamp
     skiprows=1_000, # skip first 1_000 rows
     nrows=1_000, # load only 1_000 rows
@@ -253,9 +252,7 @@ If your data is too large to fit into memory, you should simply include the `chu
 
 ```python
 import pandas as pd
-path = "path/to/your/test_file.csv"
-chunksize = 1e6
-with pd.read_csv(path, chunksize=chunksize) as reader:
+with pd.read_csv("path/to/your/test_file.csv", chunksize=100_000) as reader:
     for chunk in reader:
         # process chunk
 ```
@@ -264,8 +261,7 @@ If you want to use vanilla python, you could also read a file line-by-line using
 
 ```python
 import csv
-path = "path/to/your/test_file.csv"
-with open(path, "r") as file:
+with open("path/to/your/test_file.csv", "r") as file:
     reader = csv.reader(file)
     for line in reader:
         # process line
