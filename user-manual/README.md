@@ -235,10 +235,18 @@ import pandas as pd
 
 Your first *actual* processing step will typically be to load your data. 
 
+If you want to use vanilla python, you may read a `.csv` file line-by-line using the built-in `open` and `csv.reader` function: 
+
+```python
+with open("path/to/your/test_file.csv", "r") as file:
+    reader = csv.reader(file)
+    for line in reader:
+        # process line
+```
+
 Most of the time, you will want to use the Python library [pandas](https://pandas.pydata.org/) in order to read in a variety of file formats (`.csv`, `.json`, `.h5`, ...) and store their content in a  tabular data structure. For a simple `.csv` (`.csv.gz`) file, you will want to use the powerful `pd.read_csv` function which returns a `pd.DataFrame`: 
 
 ```python
-import pandas as pd
 df = pd.read_csv(
     filepath_or_buffer="path/to/your/test_file.csv",
     parse_dates=["Timestamp_UTC], # parse timestamp string to pd.Timestamp
@@ -251,20 +259,9 @@ df = pd.read_csv(
 If your data is too large to fit into memory, you should simply include the `chunksize` argument to which makes `pd.read_csv` return a context manager that allows you to iterate chunkwise over the entire file: 
 
 ```python
-import pandas as pd
 with pd.read_csv("path/to/your/test_file.csv", chunksize=100_000) as reader:
     for chunk in reader:
         # process chunk
-```
-
-If you want to use vanilla python, you could also read a file line-by-line using the built-in `open` and `csv.reader` function: 
-
-```python
-import csv
-with open("path/to/your/test_file.csv", "r") as file:
-    reader = csv.reader(file)
-    for line in reader:
-        # process line
 ```
 
 All of the above-mentioned options are single-threaded, meaning that they may take an intolerable amount of time when reading files that are multiple GB or even TB in size. Should this apply to your project, we encourage you to read chapter 4.1 that is about multi-threaded I/O.   
