@@ -180,10 +180,11 @@ Having decided on your preferred runtime, you need to decide on how to organize 
 
 #### 3.2.1&nbsp; Scripting
 
-
+While any *interpreted* program is technically referred to as a script (Python is an interpreted language), a script will typically refer to a "quick and dirty" solution. 
 
 #### 3.2.2&nbsp; Modules
 
+While a script will typically be the starting point for your program, we encourage you .... to refactor your code into beautiful, reusable, maintainable, ... code ......
 
 
 ### 3.3&nbsp; Important steps
@@ -268,22 +269,29 @@ All of the above-mentioned options are *single*-threaded, meaning that they may 
 
 #### 3.3.4&nbsp; Perform computations
 
-This is where you put your processing steps. You may stay within the pandas universe and work on a `pd.DataFrame`, you may use [numpy](https://numpy.org/) to work on a `np.ndarray`, or you may choose virtually *any* other type of data structure (and there are plenty in Python). 
+This is where you put all of your processing steps. You may stay within the pandas universe and work on a `pd.DataFrame`, you may use [numpy](https://numpy.org/) to work on a `np.ndarray`, or you may choose virtually *any* other type of data structure (and there are plenty in Python). 
 
 ```python
 df = ...
 ```
 
-While pandas, numpy, and other frameworks oftentimes provide highly optimized functionality that is implemented in lower-level programming languages (C, C++, ...), they will typically only be *single*-threaded and thereby be much slower than would be otherwise possible. Should this apply to your project, we refer you to chapter 4.2 that is about multi-threaded compute. 
+While pandas, numpy, and other frameworks will oftentimes provide highly optimized functionality implemented in lower-level programming languages (C, C++, ...), they will typically only be *single*-threaded and thereby be much slower than would be otherwise possible. Should this apply to your project, we refer you to chapter 4.2 that is about multi-threaded compute. 
 
-... refer to 4.2 Compute
+#### 3.3.5&nbsp; Monitor resource usage
 
-#### 3.3.5&nbsp; Monitor computations
+When running your code, it may make sense to monitor resource usage, check for bottlenecks, and perform sanity checks on intermediate results. 
+
+...
+...
+...
 
 #### 3.3.6&nbsp; Save output data
-... results
 
+Most of the time, you will want to use pandas in order to write to a variety of file formats (`.csv`, `.json`, `.h5`, ...). 
 
+...
+...
+...
 
 ## 4&nbsp; Optimized Python
 
