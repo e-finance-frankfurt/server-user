@@ -264,9 +264,18 @@ with pd.read_csv("path/to/your/test_file.csv", chunksize=100_000) as reader:
         # process chunk
 ```
 
-All of the above-mentioned options are single-threaded, meaning that they may take an intolerable amount of time when reading files that are multiple GB or even TB in size. Should this apply to your project, we encourage you to read chapter 4.1 that is about multi-threaded I/O.   
+All of the above-mentioned options are *single*-threaded, meaning that they may take an intolerable amount of time when reading files that are multiple GB or even TB in size! Should this apply to your project, we refer you to chapter 4.1 that is about multi-threaded I/O.   
 
 #### 3.3.4&nbsp; Perform computations
+
+This is where you put your processing steps. You may stay within the pandas universe and work on a `pd.DataFrame`, you may use [numpy](https://numpy.org/) to work on a `np.ndarray`, or you may choose virtually *any* other type of data structure (and there are plenty in Python). 
+
+```python
+df = ...
+```
+
+While pandas, numpy, and other frameworks oftentimes provide highly optimized functionality that is implemented in lower-level programming languages (C, C++, ...), they will typically only be *single*-threaded and thereby be much slower than would be otherwise possible. Should this apply to your project, we refer you to chapter 4.2 that is about multi-threaded compute. 
+
 ... refer to 4.2 Compute
 
 #### 3.3.5&nbsp; Monitor computations
