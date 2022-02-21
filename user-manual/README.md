@@ -72,8 +72,6 @@ You are provided with two user interface options, Jupyter Lab and Jupyter Notebo
 
 #### 2.1.1&nbsp; Jupyter Lab (default)
 
-![2_1_lab.png](media/2_1_lab.png)
-
 The default user interface for the jupyter server is the [Jupyter Lab](https://jupyterlab.readthedocs.io/en/latest/), the url being `http://<ip-adress>/user/<user-name>/lab`. 
 
 The Jupyter Lab user interface gives you all **functionality** that you could possible need in one single browser tab. On the left-hand side, you can find `file browser`, `running kernels`, `table of contents` (for an open notebook), and the `extension manager`. On the right-hand side, you can find `property inspector` and the `debugging tool`. We may use the `kernel` tab to interrupt, shut down, or restart the selected kernel, meaning the kernel that is underlying the notebook or console that you are currently interacting with. We may use the `file` tab to log out, or to go back to the Jupyter Hub (hub control panel) from where we can start and stop all of our Jupyter Server instances. 
@@ -84,11 +82,9 @@ The Jupyter Lab user interface allows you to open and **display text files** in 
 
 <br />
 
-![2_1_jupyter_notebook.png](_files/2_1_jupyter_notebook.png)
+![2_2_jupyter_notebook.png](_files/2_2_jupyter_notebook.png)
 
 #### 2.1.2&nbsp; Jupyter Notebook
-
-![2_2_notebook.png](media/2_2_notebook.png)
 
 The alternative user interface for the jupyter server is the [Jupyter Notebook](https://jupyter-notebook.readthedocs.io/en/latest/), the url being `http://<ip-adress>/user/<user-name>/tree`. You can simply switch to this user interface by replacing `/lab` with `/tree`. Note, however, that this switch will not persist when reloading the page, and that we strongly advise you to use Jupyter Lab.  
 
