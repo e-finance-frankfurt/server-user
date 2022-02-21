@@ -16,7 +16,7 @@ If you have been invited to use our compute servers, you have also been provided
 
 To log in to the jupyter hub, ...
 
-1. Enter http://`<ip-adress>` in your browser to access the JupyterHub login page. Note that this page can only be accessed from within the university network or via a virtual private network (VPN).
+1. Enter `http://<ip-adress>` in your browser to access the JupyterHub login page. Note that this page can only be accessed from within the university network or via a virtual private network (VPN).
 2. Enter your `<user-name>`. The user name is determined by the admin.
 3. Enter an arbitrary password, which is entirely up to you. Only after your first login, your account will have password protection.
 4. Click on the `sign in` button, leading you directly to the server options page for your default server.
@@ -74,7 +74,7 @@ You are provided with two user interface options, Jupyter Lab and Jupyter Notebo
 
 The default user interface for the jupyter server is the [Jupyter Lab](https://jupyterlab.readthedocs.io/en/latest/), the url being `http://<ip-adress>/user/<user-name>/lab`. 
 
-The Jupyter Lab user interface gives you all **functionality** that you could possible need in one single browser tab. On the left-hand side, you can find `file browser`, `running kernels`, `table of contents` (for an open notebook), and the `extension manager`. On the right-hand side, you can find `property inspector` and the `debugging tool`. We may use the `kernel` tab to interrupt, shut down, or restart the selected kernel, meaning the kernel that is underlying the notebook or console that you are currently interacting with. We may use the `file` tab to log out, or to go back to the Jupyter Hub (hub control panel) from where we can start and stop all of our Jupyter Server instances. 
+The Jupyter Lab user interface gives you all **functionality** that you could possible need in one single browser tab. On the left-hand side, you can find `file browser`, `running kernels`, `table of contents` (for an open notebook), and the `extension manager`. On the right-hand side, you can find `property inspector` and `debugging tool`. We may use the `kernel` tab to interrupt, shut down, or restart the selected kernel, meaning the kernel that is underlying the notebook or console that you are currently interacting with. We may use the `file` tab to log out, or to go back to the Jupyter Hub (hub control panel) from where we can start and stop all of our Jupyter Server instances. 
 With everything located within a single browser tab, note that you can **split your screen** by dragging a tab to either side (up, down, left, right), allowing you to look at multiple files side-by-side. For example, it may make sense for you to run a script on one side and monitor your resource usage on the other. 
 
 The Jupyter Lab user inteface allows for different ways of **running your code**. Both `notebook` and `console` can be used for interactive programming, use the `notebook` runtime if you additionally want to include markdown (see chapter 3.1.1). The `terminal` is less convenient, but it plays an important role when facing long-running jobs (see chapter 3.1.2). 
@@ -118,7 +118,7 @@ A graphics processing unit (GPU) can be used for massively parallelized tasks, i
 
 #### 2.3.3&nbsp; RAM
 
-On the one hand, CPU and GPU implement high-bandwith yet low-capacity memory, allowing for *extremely* fast data access (TB/s range) at the cost of size (MB range). On the other hand, solid state drive (SSD) and hard disk drive (HDD) represent high-capacity yet low-bandwith memory, allowing for large data storage (terabyte range) at the cost of speed (MB/s range). In the middle of this tiered formation, random access memory (RAM) is the sweet-spot in this trade-off. With regard to runtime, efficient memory utilization is one of the most important, if not *the* most important prerequisite to writing a fast program.  
+On the one hand, CPU and GPU implement high-bandwith yet low-capacity memory, allowing for *extremely* fast data access (TB/s range) at the cost of size (MB range). On the other hand, solid state drive (SSD) and hard disk drive (HDD) represent high-capacity yet low-bandwith memory, allowing for large data storage (terabyte range) at the cost of speed (MB/s range). In the middle of this tiered formation, random access memory (RAM) is the sweet-spot in this trade-off. With regard to runtime, efficient memory utilization is one of the most important, if not *the* most important prerequisite to optimizing runtime.  
 
 ### 2.4&nbsp; Storage options
 
@@ -168,7 +168,11 @@ The notebook (`.ipynb`) is the ideal runtime for prototyping, allowing you to tr
 
 The terminal is less convenient, you simply run a script (`.py`) that will contain and/or import all the functionality that you need, it is **not interactive** by any means. 
 
-**Important:** Whatever you do, we *always* recommend that you log your results in a `.txt` file and regularly save checkpoints so that you are prepared for any kind of system failure (may always happen)! We recommend using our [library](../library) that includes this type of functionality. 
+```console
+python3 path/to/your/test_script.py
+```
+
+**Important:** Whatever you do, we *always* recommend that you log your results in a `.txt` file and regularly save checkpoints so that you are prepared for any kind of system failure that may always happen! We recommend using our [library](../library) that provides this type of functionality. 
 
 ### 3.2&nbsp; Organization options
 
@@ -184,11 +188,37 @@ Having decided on your preferred runtime, you need to decide on how to organize 
 
 ### 3.3&nbsp; Important steps
 
-When you start writing code, you would typically start with the following steps.  
+When you start writing code, you would typically go through the following steps.  
 
-#### 3.3.1&nbsp; **Request resources** <--- lieber separaten Punkt draus machen
+#### 3.3.1&nbsp; Install dependencies
 
-**Important:** If you have access to a GPU and want to use it, you must *always* make a request at the top of your program, checking if your requested resources are available and to prevent your program from potentially crashing another user's job that may already have been running for days (they will not be happy)! 
+There is a mentionable downside to using a Jupyter Server based on a docker image, which is that you will have to reinstall all dependencies (that do not come preinstalled) with every restart. Every dependency that is currently installed in your environment can be listed with the command `pip freeze`, and to write the list to a `requirements.txt` file, you may simply run the following command in a terminal: 
+
+```console
+pip freeze > requirements.txt
+```
+
+We recommend that you use this file to reinstall all your dependencies with every restart. This way, you may always have the right version of some library that is not included in the docker image, or that is too old or too recent to be compatible with your code. To run `pip install` for all items in the `requirements.txt` file, you may simply run the following command in a terminal: 
+
+```console
+pip install -r requirements.txt
+```
+
+#### 3.3.2&nbsp; Request resources (important)
+
+If you have access to a GPU and want to use it, you must *always* make a request at the top of your program, checking if your requested resources are available and to prevent your program from potentially crashing another user's job that may have been running for days already (they will not be happy)! To do so, you simply put the following lines at the *top* of your program (not further down below): 
+
+```python
+from gpu import GpuManager
+gpu_manager = GpuManager()
+gpu_manager.request_gpus(1)
+```
+
+```python
+# should change to this:
+from gpu import request_gpu
+request_gpu(1)
+```
 
 #### 3.3.2&nbsp; Import modules
 
