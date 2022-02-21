@@ -126,6 +126,8 @@ You are provided with three storage options.
 
 #### 2.4.1&nbsp; User storage
 
+> User storage should always be your main storage!
+
 Most of the time, you should use your 100 GB of user storage (internal storage). This is **both the fastest and the safest option**, as user storage is based on an NVMe SSD and can be accessed only by you and the admin. 
 
 #### 2.4.2&nbsp; Temp storage
@@ -142,7 +144,7 @@ Most of the time, you should use your 100 GB of user storage (internal storage).
 
 #### 2.4.4&nbsp; Databases
 
-TODO: replace the read-only storage with a NoSQL databases. 
+TODO: replace the read-only storage with a NoSQL database. 
 
 
 
@@ -180,7 +182,11 @@ Having decided on your preferred runtime, you need to decide on how to organize 
 
 #### 3.2.1&nbsp; Scripting
 
-While any *interpreted* program is technically referred to as a script (Python is an interpreted language), a script will typically refer to a "quick and dirty" solution. 
+While any *interpreted* program is technically referred to as a script (Python is an interpreted language), a script will typically refer to a "quick and dirty" solution. Obviously, every implementation has to start somewhere and seldomly that will be a fully thought-out, object-oriented architecture. However, people tend to keep putting all of their code into a single file, copypasting as they please, and telling themselves that their code is far too intuitive to require thorough documentation. At some point, however, their program will most definitely turn into a terrible mess that *anyone* will have a hard time understanding (yes, even them). This is even more problematic in the face of interactive programming in jupyter notebboks! 
+
+Scripting is 
+
+We therefore strongly encourage you to go the extra mile and think about 
 
 #### 3.2.2&nbsp; Modules
 
