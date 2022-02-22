@@ -1,4 +1,4 @@
-# user-manual
+# manual
 
 ## 1&nbsp; Jupyter Hub
 
@@ -10,7 +10,7 @@ In this chapter, we will briefly describe how to navigate the hub control panel.
 
 ### 1.1&nbsp; Logging in
 
-> Please make your first **login** as soon as possible, given that you yourself will need to set your password. Neither will you be provided with an initial password, nor will you be able to change an already set password later on - whatever string you type in during your first login will remain your password!
+> Please make your first **login** as soon as possible, given that *you yourself* will need to set your password. Neither will you be provided with an initial password, nor will you be able to change an already set password later on - whatever string you type in during your first login will remain your password!
 
 If you have been invited to use our compute servers, you have also been provided with `<user-name>` and `<ip-address>`. Using these credentials, you will be able to log in to the jupyter **hub** (hub control panel). 
 
