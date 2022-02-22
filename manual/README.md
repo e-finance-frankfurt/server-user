@@ -10,7 +10,7 @@ In this chapter, we will briefly describe how to navigate the hub control panel.
 
 ### 1.1&nbsp; Logging in
 
-> Please make your first **login** as soon as possible, given that *you yourself* will need to set your password. Neither will you be provided with an initial password, nor will you be able to change an already set password later on - whatever string you type in during your first login will remain your password!
+> Please make your first **login** as soon as possible, given that *you yourself* will need to set your password. Neither will you be provided with an initial password, nor will you be able to change an already set password later on - whatever string you type in during your first login will remain your password! Only after your first login, your account will have password protection!
 
 If you have been invited to use our compute servers, you have also been provided with `<user-name>` and `<ip-address>`. Using these credentials, you will be able to log in to the jupyter **hub** (hub control panel). 
 
@@ -18,7 +18,7 @@ To log in to the jupyter hub, ...
 
 1. Enter `http://<ip-adress>` in your browser to access the JupyterHub login page. Note that this page can only be accessed from within the university network or via a virtual private network (VPN).
 2. Enter your `<user-name>`. The user name is determined by the admin.
-3. Enter an arbitrary password, which is entirely up to you. Only after your first login, your account will have password protection.
+3. Enter an arbitrary password, which is entirely up to you. 
 4. Click on the `sign in` button, leading you directly to the server options page for your default server.
 5. Click on the `home` tab, leading you to the hub control panel.
 
