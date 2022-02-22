@@ -1,4 +1,4 @@
-# manual
+# manual-user
 
 ## 1&nbsp; Jupyter Hub
 
