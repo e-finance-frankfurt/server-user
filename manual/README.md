@@ -220,7 +220,7 @@ from library.resources.gpu import request_gpu
 request_gpu()
 ```
 
-If you need more information, you could also put the following lines (which is what `request_gpu()` does under the hood): 
+If you want more functionality, you could also put the following lines (which is what `request_gpu()` does under the hood): 
 
 ```python
 from gpu import GpuManager
