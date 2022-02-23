@@ -1,15 +1,18 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# TODO: implement parallelized solution based on dask 
-# https://examples.dask.org/applications/embarrassingly-parallel.html
+# this script should be executed in a terminal as follows: 
+# python3 <path_to_this_file> --path <path_to_raw_data> (--nrows 1000000)
+
+# TODO: provide built-in multi-threading
+# TODO: fix datatable issues
 
 import argparse
 import datatable as dt
 import numpy as np
 import pandas as pd
-import time
 pd.options.mode.chained_assignment = None  # default="warn"
+import time
 
 DATETIME = "Date-Time"
 
@@ -362,7 +365,7 @@ def reconstruct_book(data:pd.DataFrame):
 
     return full
 
-def serialize_reconstruct_book(data:pd.DataFrame):
+def chunkwise_reconstruct_book(data:pd.DataFrame):
     
     # determine breaking points by day
     series = data["Date-Time"].fillna(method="ffill").dt.day # processing by the hour would raise problems with forward-fill
@@ -398,7 +401,7 @@ def load_df(path:str, nrows=None): # as .csv(.gz)
     # load df using pandas (single-core!)
     df_cols = pd.read_csv(path, nrows=1).columns # peek at column names
     df = pd.read_csv(path, nrows=nrows, 
-        names=df_cols, header=0, # ensure that all coluumns are identical per row
+        names=df_cols, header=0, # ensure that all columns are identical per row
         na_values=[""], # make pd.read_csv parse empty strings as NaNs
     )
     
@@ -416,6 +419,7 @@ def save_df(df:pd.DataFrame, path:str): # as .csv(.gz)
     # pandas: reliable but slow
     df.to_csv(path, compression="gzip", index=False)
 
+# ...
 if __name__ == "__main__":
     
     # instantiate argument parser
@@ -432,10 +436,10 @@ if __name__ == "__main__":
     
     # reconstruct book
     print("start reconstructing LL2 data ...")
-    data = serialize_reconstruct_book(data) # data = reconstruct_book(data)
+    data = chunkwise_reconstruct_book(data) # data = reconstruct_book(data)
     print("... done reconstructing LL2 data")
 
-    # save df
+    # save df into same directory
     path_save = path_load.replace(".csv.gz", "_reconstructed.csv.gz")
     save_df(data, path_save)
 
