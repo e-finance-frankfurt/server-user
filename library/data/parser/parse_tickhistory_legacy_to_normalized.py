@@ -1,8 +1,7 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# this script should be executed in a terminal as follows: 
-# python3 <path_to_this_file> --path <path_to_raw_data> (--nrows 1000000)
+# execute this script via terminal: python3 <path_to_this_file> --path <path_to_raw_data> (--nrows 1e6)
 
 # TODO: provide built-in multi-threading
 # TODO: fix datatable issues
@@ -391,19 +390,23 @@ def chunkwise_reconstruct_book(data:pd.DataFrame):
 
 @time_decorator
 def load_df(path:str, nrows=None): # as .csv(.gz)
+
+    # parse nrows string to support both input of form "1000" and "1e3"
+    if nrows is not None:
+        nrows = int(float(nrows))
     
-    # load df using datatable (multi-core!), then transform to pandas
-    # df = dt.fread(path, max_nrows=nrows, verbose=False, 
-    #     fill=True, # fill missing fields (happens in RAW LEGACY data)
-    #     na_strings=[""], # make datatable.fread parse empty strings as NaNs
-    # ).to_pandas()
+    # load df using datatable (multi-threaded!), then transform to pandas
+    df = dt.fread(path, max_nrows=nrows, verbose=False,
+        fill=True, # fill missing fields (happens in RAW LEGACY data)
+        na_strings=[""], # make datatable.fread parse empty strings as NaNs
+    ).to_pandas()
     
-    # load df using pandas (single-core!)
-    df_cols = pd.read_csv(path, nrows=1).columns # peek at column names
-    df = pd.read_csv(path, nrows=nrows, 
-        names=df_cols, header=0, # ensure that all columns are identical per row
-        na_values=[""], # make pd.read_csv parse empty strings as NaNs
-    )
+    # load df using pandas (single-threaded!)
+    # df_cols = pd.read_csv(path, nrows=1).columns # peek at column names
+    # df = pd.read_csv(path, nrows=nrows,
+    #     names=df_cols, header=0, # ensure that all columns are identical per row
+    #     na_values=[""], # make pd.read_csv parse empty strings as NaNs
+    # )
     
     # parse datetime using pandas
     df[DATETIME] = pd.to_datetime(df[DATETIME])
@@ -413,11 +416,11 @@ def load_df(path:str, nrows=None): # as .csv(.gz)
 @time_decorator
 def save_df(df:pd.DataFrame, path:str): # as .csv(.gz)
 
-    # datatable: fast, but causes error!
-    # dt.Frame(df).to_csv(path=path, compression="gzip") 
+    # datatable: fast, but may cause error!
+    dt.Frame(df).to_csv(path=path, compression="gzip")
     
     # pandas: reliable but slow
-    df.to_csv(path, compression="gzip", index=False)
+    # df.to_csv(path, compression="gzip", index=False)
 
 # ...
 if __name__ == "__main__":
@@ -425,7 +428,7 @@ if __name__ == "__main__":
     # instantiate argument parser
     parser = argparse.ArgumentParser("reconstruct_book")
     parser.add_argument("--path", type=str, help="specify filepath", default="...")
-    parser.add_argument("--nrows", type=int, help="number of rows to read", default=None)
+    parser.add_argument("--nrows", type=str, help="number of rows to read", default=None)
 
     # parse args
     args = parser.parse_args()
