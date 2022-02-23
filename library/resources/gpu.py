@@ -1,12 +1,12 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# TODO: support different types of gpus (A100, RTX 3090, ...)
+# TODO: support fractional gpus in MIG mode
+
 # general imports
 import os
 import xml.etree.ElementTree
-
-# TODO: support different types of gpus (A100, RTX 3090, ...)
-# TODO: support fractional gpus in MIG mode
 
 # settings
 GPU_COUNT = 2
@@ -51,7 +51,10 @@ class GPUManager(metaclass=Singleton):
         # set default visibility, being that all gpus are hidden from the user
         os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
         os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
+        
+        # suppress tf logger
+        os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+        
         # status
         self._num_available = None
         self._num_requested = None
@@ -157,26 +160,31 @@ class GPUManager(metaclass=Singleton):
         
         # ...
         test_list = [
+            
             # check utilization.gpu_util, GPU_UTIL_THRESHOLD: 0 %
             lambda gpu: not int(gpu.find("utilization").find("gpu_util")
                 .text.split(" ")[0]
             ) > 0,
+            
             # check temperature.gpu_temp, GPU_TEMP_THRESHOLD: 30 C
             lambda gpu: not int(gpu.find("temperature").find("gpu_temp")
                 .text.split(" ")[0]
             ) > 30,
+            
             # check utilization.memory_util, MEM_UTIL_THRESHOLD: 0 %
             lambda gpu: not int(gpu.find("utilization").find("memory_util")
                 .text.split(" ")[0]
             ) > 0,
-            # check fb_memory_usage.used, MEM_USAGE_THRESHOLD: 10 MiB
+            
+            # check fb_memory_usage.used, MEM_USAGE_THRESHOLD: 500 MiB
             lambda gpu: not int(gpu.find("fb_memory_usage").find("used")
                 .text.split(" ")[0]
-            ) > 10,
+            ) > 500,
+        
         ]
         
         # if any test for a gpuid has failed, remove gpuid from gpuid_list
-        for gpuid in gpuid_list:
+        for gpuid in gpuid_list.copy(): # iterate over copy!
             if not all([test_fun(gpu_list[gpuid]) for test_fun in test_list]):
                 gpuid_list.remove(gpuid)
         
@@ -190,24 +198,49 @@ class GPUManager(metaclass=Singleton):
         given kernel, not across multiple kernels!
         
         :param gpuid_list:
-            list, expose gpus for the listed gpuid numbers
+            list, expose gpus corresponding to the listed gpuid numbers
         """
 
         # updated visibility, expose only the gpus included in gpuid_list
         gpuid_string = ",".join(map(str, gpuid_list))
         os.environ["CUDA_VISIBLE_DEVICES"] = gpuid_string
         
+        # block gpus by loading small tf.constant onto device
+        self._block_gpu(gpuid_list)
+        
         return len(gpuid_list)
+    
+    def _block_gpu(self, gpuid_list):
+        """
+        Block gpus by loading small tf.constant onto each device in gpuid_list.
+        
+        :param gpuid_list:
+            list, block gpus corresponding to the listed gpuid numbers
+        """
+        
+        # import
+        import tensorflow as tf
+        
+        # load small tf.constant onto each device in gpuid_list
+        for gpuid in gpuid_list:
+            with tf.device(f"/gpu:{gpuid}"):
+                _ = tf.constant(42)
     
     @property
     def tensorflow_gpu_count(self):
         """
-        Test the number of gpus seen by TensorFlow.
+        Test the number of gpus seen by TensorFlow, this will be possible only
+        after a request has been made.
+        
+        Note that we put the import only within the scope of this method as we
+        do not know whether the framework is installed on system.
         """
         
-        # ...
+        # import
+        from tensorflow.python.client.device_lib import list_local_devices
+        
+        # expose gpu(s) to the framework, do this only request has been made
         if self._num_requested:
-            from tensorflow.python.client.device_lib import list_local_devices
             return len(list_local_devices()) - 1 # do not count cpu
         # ...
         else:
@@ -216,21 +249,30 @@ class GPUManager(metaclass=Singleton):
     @property
     def pytorch_gpu_count(self):
         """
-        Test the number of gpus seen by PyTorch.
+        Test the number of gpus seen by PyTorch, this will be possible only
+        after a request has been made.
+        
+        Note that we put the import only within the scope of this method as we
+        do not know whether the framework is installed on system.
         """
     
-        # this will expose the gpu(s) to the framework, do this only request has been made
+        # import
+        from torch.cuda import device_count
+    
+        # expose gpu(s) to the framework, do this only request has been made
         if self._num_requested:
-            from torch.cuda import device_count
             return device_count()
         # ...
         else:
             return None
         
     # TODO
-    def monitor_gpu(self):
+    def monitor_gpu(self, gpuid_list):
         """
-        Run real-time monitorung of gpus.
+        Run real-time monitoring of each device in gpuid_list.
+        
+        :param gpuid_list:
+            list, monitor gpus corresponding to the listed gpuid numbers
         """
         
         # ...
