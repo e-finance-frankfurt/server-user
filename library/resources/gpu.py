@@ -129,7 +129,7 @@ class GPUManager(metaclass=Singleton):
         - gpu utilization: 0 %
         - gpu temperature: 30 C
         - memory utilization: 0 %
-        - memory usage: 10 MiB
+        - memory usage: 500 MiB
         
         For more details on the `nvidia-smi` command, refer to ...
         https://developer.download.nvidia.com/compute/DCGM/docs/nvidia-smi-367.38.pdf
@@ -213,6 +213,7 @@ class GPUManager(metaclass=Singleton):
     def _block_gpu(self, gpuid_list):
         """
         Block gpus by loading small tf.constant onto each device in gpuid_list.
+        This will take 570 MiB on each device.
         
         :param gpuid_list:
             list, block gpus corresponding to the listed gpuid numbers
@@ -224,7 +225,7 @@ class GPUManager(metaclass=Singleton):
         # load small tf.constant onto each device in gpuid_list
         for gpuid in gpuid_list:
             with tf.device(f"/gpu:{gpuid}"):
-                _ = tf.constant(42)
+                _ = tf.constant(42) # will take 570 MiB
     
     @property
     def tensorflow_gpu_count(self):
