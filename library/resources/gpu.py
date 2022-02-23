@@ -201,7 +201,7 @@ class GPUManager(metaclass=Singleton):
             list, expose gpus corresponding to the listed gpuid numbers
         """
 
-        # updated visibility, expose only the gpus included in gpuid_list
+        # set updated visibility, expose only the gpus included in gpuid_list
         gpuid_string = ",".join(map(str, gpuid_list))
         os.environ["CUDA_VISIBLE_DEVICES"] = gpuid_string
         
