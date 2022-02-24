@@ -50,6 +50,10 @@ class GPUManager(metaclass=Singleton):
         Alternatively, you may also use the shorthand version ...
         
         request_gpu(num_requested=1)
+        
+        Having requested > 0 gpus, you will not be able to make a new request
+        without restarting the kernel. Having requested 0 gpus, you will be
+        able to update your request as none of the gpus has been blocked.
         """
         
         # set default visibility, being that all gpus are hidden from the user
