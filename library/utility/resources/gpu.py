@@ -1,6 +1,10 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+__author__ = "Jonas De Paolis"
+__version__ = "2022-02-23"
+
+# open issues
 # TODO: support different types of gpus (A100, RTX 3090, ...)
 # TODO: support fractional gpus in MIG mode
 
