@@ -1,18 +1,23 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# execute this script via terminal: python3 <path_to_this_file> --path <path_to_raw_data> (--nrows 1e6)
+__author__ = "Jonas De Paolis"
+__version__ = "2022-02-23"
 
 # TODO: provide built-in multi-threading
-# TODO: fix datatable issues
+# TODO: resolve datatable issues
 
+# general imports
 import argparse
 import datatable as dt
 import numpy as np
-import pandas as pd
-pd.options.mode.chained_assignment = None  # default="warn"
 import time
 
+# import pandas, suppress prints (None)
+import pandas as pd
+pd.options.mode.chained_assignment = None  # default="warn"
+
+# settings
 DATETIME = "Date-Time"
 
 def time_decorator(function):
@@ -434,8 +439,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # load df
-    path_load = args.path # "./test_files/DB_Raw.csv" 
-    data = load_df(path_load, nrows=args.nrows)
+    data = load_df(
+        path=args.path, # "./test_files/DB_Raw.csv"
+        nrows=int(float(args.nrows)) if args.nrows is not None else None,
+    )
     
     # reconstruct book
     print("start reconstructing LL2 data ...")
@@ -443,7 +450,9 @@ if __name__ == "__main__":
     print("... done reconstructing LL2 data")
 
     # save df into same directory
-    path_save = path_load.replace(".csv.gz", "_reconstructed.csv.gz")
-    save_df(data, path_save)
+    save_df(
+        df=data,
+        path=args.path.replace(".csv.gz", "_reconstructed.csv.gz"),
+    )
 
 
