@@ -15,17 +15,12 @@ import xml.etree.ElementTree
 # settings
 GPU_COUNT = 2
 
-# singleton pattern
+# use singleton metaclass to ensure that only one class instance may exist
 class Singleton(type):
-    
     _instances = {}
-    
     def __call__(cls, *args, **kwargs):
-
-        # only if there does not exist a class instance, create a new one
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-
         return cls._instances[cls]
 
 # detailed version ---
