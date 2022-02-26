@@ -15,18 +15,25 @@ import xml.etree.ElementTree
 # settings
 GPU_COUNT = 2
 
-# detailed version ---
+# singleton pattern ---
 
-# ensure that there may exist only a single class instance
 class Singleton(type):
     
     _instances = {}
     
     def __call__(cls, *args, **kwargs):
+        """
+        Ensure that there may exist only a single class instance, and then
+        redirect always to this original class instance.
+        """
+        
+        # only if there does not exist a class instance, instantiate one
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-        
+
         return cls._instances[cls]
+
+# detailed version ---
 
 class GPUManager(metaclass=Singleton):
     
