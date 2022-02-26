@@ -118,7 +118,7 @@ A graphics processing unit (GPU) can be used for massively parallelized tasks, i
 
 #### 2.3.3&nbsp; RAM
 
-On the one hand, CPU and GPU implement high-bandwith yet low-capacity memory, allowing for *extremely* fast data access (TB/s range) at the cost of size (MB range). On the other hand, solid state drive (SSD) and hard disk drive (HDD) represent high-capacity yet low-bandwith memory, allowing for large data storage (terabyte range) at the cost of speed (MB/s range). In the middle of this tiered formation, random access memory (RAM) is the sweet-spot in this trade-off. With regard to runtime, efficient memory utilization is one of the most important, if not *the* most important prerequisite to optimizing runtime.  
+On the one hand, CPU and GPU implement high-bandwith yet low-capacity memory, allowing for *extremely* fast data access (TB/s range) at the cost of size (MB range). On the other hand, solid state drive (SSD) and hard disk drive (HDD) represent high-capacity yet low-bandwith memory, allowing for large data storage (terabyte range) at the cost of speed (MB/s range). In the middle of this tiered formation, random access memory (RAM) is the sweet-spot in the trade-off. With regard to runtime, efficient memory utilization is one of the most important prerequisites, if not *the* most important prerequisite to optimizing runtime.  
 
 ### 2.4&nbsp; Storage options
 
@@ -130,17 +130,17 @@ You are provided with three storage options.
 
 Most of the time, you should use your 100 GB of user storage (internal storage). This is **both the fastest and the safest option**, as user storage is based on an NVMe SSD and can be accessed only by you and the admin. 
 
-#### 2.4.2&nbsp; Temp storage
+#### 2.4.2&nbsp; Temp storage (optional) 
 
 > To keep this drive empty, delete your files on a regular basis. To keep your files safe, always keep a back-up somewhere else. 
 
-(optional) In some cases, you may want to *temporarily* share data with other users. The `temp` storage is relatively fast as it is based on a regular SSD, but please understand that *every* user has read and write permission for this drive and could therefore easily wipe out all of your data. 
+In some cases, you may want to *temporarily* share data with other users. The `temp` storage is relatively fast as it is based on a regular SSD, but please understand that *every* user has read and write permission for this drive and could therefore easily wipe out all of your data. 
 
-#### 2.4.3&nbsp; Read-only storage
+#### 2.4.3&nbsp; Read-only storage (optional)
 
 > While every user has to sign a non-disclosure agreement (NDA), refer to the [server-data](...) repository to see whether you may use a particular dataset from this drive. 
 
-(optional) Usually, you will want to work with some kind of market data. The `read_only` storage is read-only, meaning that you may always read from this drive, but you do *not* have write permission (do *not* try to delete data). 
+Usually, you will want to work with some kind of market data. The `read_only` storage is read-only, meaning that you may always read from this drive, but you do *not* have write permission (do *not* try to delete data). 
 
 #### 2.4.4&nbsp; Databases
 
@@ -182,7 +182,7 @@ Having decided on your preferred runtime, you need to decide on how to organize 
 
 #### 3.2.1&nbsp; Scripting
 
-While any *interpreted* program is technically referred to as a script (Python is an interpreted language), a script will typically refer to a "quick and dirty" solution. Obviously, every implementation has to start somewhere and seldomly that will be a fully thought-out, object-oriented architecture. However, people tend to keep putting all of their code into a single file, copypasting as they please, and telling themselves that their code is far too intuitive to require thorough documentation. At some point, however, their program will most definitely turn into a terrible mess that *anyone* will have a hard time understanding (yes, even them). This is even more problematic in the face of interactive programming in jupyter notebboks! 
+While any *interpreted* program is technically referred to as a script (Python is an interpreted language), a script will typically refer to a "quick and dirty" solution. Obviously, every implementation has to start somewhere and seldomly that will be a fully thought-out, object-oriented architecture. However, people tend to keep putting all of their code into a single file, usually leading to lots of redundancy and a lack of documentation. At some point, however, their program will most definitely turn into a terrible mess that *anyone* will have a hard time understanding (even themself). This is even more problematic in the face of interactive programming in jupyter notebboks! 
 
 Scripting is 
 
@@ -197,7 +197,7 @@ While a script will typically be the starting point for your program, we encoura
 
 When you start writing code, you would typically go through the following steps.  
 
-#### 3.3.1&nbsp; Install dependencies
+#### 3.3.1&nbsp; Install dependencies with every restart
 
 There is a mentionable downside to using a Jupyter Server based on a docker image, which is that you will have to reinstall all dependencies (that do not come preinstalled) with every restart. Every dependency that is currently installed in your environment can be listed with the command `pip freeze`, and to write the list to a `requirements.txt` file, you may simply run the following command in a terminal: 
 
@@ -213,20 +213,24 @@ pip install -r requirements.txt
 
 #### 3.3.2&nbsp; Request resources (important)
 
-If you have access to a GPU and want to use it, you must *always* make a request at the top of your program, checking if your requested resources are available and to prevent your program from potentially crashing another user's job that may have been running for days already (they will not be happy)! To do so, you simply put the following lines at the *top* of your program (will not work further down below): 
+If you have access to a GPU and want to use it, you must *always* make a request at the top of your program, checking if your requested resources are available and to prevent your program from potentially crashing another user's job that may have been running for days already (they will not be happy)! To do so, you simply put the following lines at the *top* (important!) of your program to import the `request_gpu()` function from the `library.resources.gpu` module: 
 
 ```python
 from library.resources.gpu import request_gpu
-request_gpu()
+request_gpu(num_requested=1)
 ```
 
 If you want more functionality, you could also put the following lines (which is what `request_gpu()` does under the hood): 
 
 ```python
-from gpu import GpuManager
+from library.resources.gpu import GpuManager
 gpu_manager = GpuManager()
-gpu_manager.request_gpu(num_gpu=1)
-gpu_manager.monitor() # open terminal with nvidia-smi command for gpu_id
+gpu_manager.request_gpu(num_requested=1)
+gpu_manager.num_available
+gpu_manager.num_requested
+gpu_manager.num_enabled
+gpu_manager.tensorflow_gpu_count
+gpu_manager.pytorch_gpu_count
 ```
 
 #### 3.3.3&nbsp; Import modules
@@ -248,10 +252,10 @@ If you want to use vanilla python, you may read a `.csv` file line-by-line using
 with open("path/to/your/test_file.csv", "r") as file:
     reader = csv.reader(file)
     for line in reader:
-        # process line
+        # process line here
 ```
 
-Most of the time, you will want to use the Python library [pandas](https://pandas.pydata.org/) in order to read in a variety of file formats (`.csv`, `.json`, `.h5`, ...) and store their content in a  tabular data structure. For a simple `.csv` (`.csv.gz`) file, you will want to use the powerful `pd.read_csv` function which returns a `pd.DataFrame`: 
+Most of the time, you will want to use the Python library [pandas](https://pandas.pydata.org/) in order to read in a variety of file formats (`.csv`, `.json`, `.h5`, ...) and store their content in a tabular data structure. For a simple `.csv` (`.csv.gz`) file, you will want to use the powerful `pd.read_csv()` function which returns a `pd.DataFrame`: 
 
 ```python
 df = pd.read_csv(
@@ -261,14 +265,15 @@ df = pd.read_csv(
     nrows=1_000, # load only 1_000 rows
     ...
 )
+# process 
 ```
 
-If your data is too large to fit into memory, you should simply include the `chunksize` argument to which makes `pd.read_csv` return a context manager that allows you to iterate chunkwise over the entire file: 
+If your data is too large to fit into memory, you should simply include the `chunksize` argument which makes `pd.read_csv` return a context manager that allows you to iterate chunkwise over the entire file. (...)
 
 ```python
 with pd.read_csv("path/to/your/test_file.csv", chunksize=100_000) as reader:
     for chunk in reader:
-        # process chunk
+        # process chunk here
 ```
 
 All of the above-mentioned options are *single*-threaded, meaning that they may take an intolerable amount of time when reading files that are multiple GB or even TB in size! Should this apply to your project, we refer you to chapter 4.1 that is about multi-threaded I/O.   
