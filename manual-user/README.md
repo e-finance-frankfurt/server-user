@@ -56,6 +56,20 @@ To create and start an additional **named server** ...
 
 Depending on your user name, the JupyterHub will give you different configuration options to choose from. Remember to choose your environment as small as possible (as large as necessary). 
 
+**Optional: Building a different virtual environment**
+
+To build an environment open a terminal and proceed as follows:
+1. create a virtual environment: `conda create -n myownenv python=3.8`
+2. activate the environment: `source activate myownenv` 
+3. if environment is active, you'll see the name of the environment in brackets when using the terminal
+4. install desired packages, e.g.: `pip install pandas`
+
+To manage the virtual environments
+1. list all virtual environments: `conda info --envs`  
+2. deactivate the environment: `conda deactivate`  
+3. delete an environment: `conda env remove --name myownenv`  
+
+> Note that all your virtual environments are deleted if you shut down your server. Hence, it is highly recommended to transform your steps builiding an custom environment into a simple python script.
 
 
 ## 2&nbsp; Jupyter Server
