@@ -34,13 +34,15 @@ Please use resources such as CPU, GPU, and memory responsibly so that all users 
 
 1. With regard to the available resource options, select the environment for your jupyter server to be as small as possible (as large as necessary). 
 
-2. Work in your home folder (user storage) where only admins will be able to see your data. Use the mounted directory `/_shared_storage/temp` *only* if you want to share data with other users, and please understand that *every* user has read and write permissions for this folder, which is why your data may not be safe!
+2. Work in your home folder (user storage) where only admins will be able to see your data. Use the mounted directory `/_shared_storage/temp_stud` *only* if you want to share data with other users, and please understand that *every* user has read and write permissions for this folder, which is why your data may not be safe!
 
-2. Terminate kernels that you do not require anymore. Although we use a kernel culling mechanism to release bound resources after a pre-defined period of kernel inactivity, you will help us optimize resource usage if you take action yourself. 
+3. To identify yourself, please create a txt-file in your home directory called `_yourfirstname_yourlastname.txt`. This enables us to easily identify you as a user.
 
-3. Shut down your server after finishing your work. Although we use a server culling mechanism to shut down the kubernetes pods running your server after a pre-defined period of user inactivity, you will help us optimize resource usage if you take action yourself. 
+4. Terminate kernels that you do not require anymore. Although we use a kernel culling mechanism to release bound resources after a pre-defined period of kernel inactivity, you will help us optimize resource usage if you take action yourself. 
 
-5. When using a GPU, we need you to *always* use the `lib.gpu.GpuManager` provided as part of the [user-lib](user-lib). This is to make sure that you do not crash GPU-enabled jobs of other users (they will not be happy ...). Although you theoretically could - do *not* work around this solution! 
+5. Shut down your server after finishing your work. Although we use a server culling mechanism to shut down the kubernetes pods running your server after a pre-defined period of user inactivity, you will help us optimize resource usage if you take action yourself. 
+
+6. When using a GPU, we need you to *always* use the `lib.gpu.GpuManager` provided as part of the [user-lib](user-lib). This is to make sure that you do not crash GPU-enabled jobs of other users (they will not be happy ...). Although you theoretically could - do *not* work around this solution! 
 
 
 
