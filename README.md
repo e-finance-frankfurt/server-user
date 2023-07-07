@@ -150,6 +150,6 @@ The e-Finance server landscape is administrated by Tino Cestonaro and Jonas De P
 
 [Tino Cestonaro](mailto:cestonaro@wiwi.uni-frankfurt.de?subject=[GitHub]%20server-user%20repository)
 
-[Jonas De Paolis](mailto:depaolis@wiwi.uni-frankfurt.de?subject=[GitHub]%20server-user%20repository)
+[Florian Ewald](mailto:ewald@wiwi.uni-frankfurt.de?subject=[GitHub]%20server-user%20repository)
 
 
