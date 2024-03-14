@@ -67,7 +67,11 @@ To build an environment open a terminal and proceed as follows:
 To manage the virtual environments
 1. list all virtual environments: `conda info --envs`  
 2. deactivate the environment: `conda deactivate`  
-3. delete an environment: `conda env remove --name myownenv`  
+3. delete an environment: `conda env remove --name myownenv`
+
+To use your customized virtual environment in a jupyter notebook:
+1. install ipykernel in your venv: `pip install --user ipykernel`  
+2. add your virtual environment to Jupyter: `python -m ipykernel install --user --name=myownenv`  
 
 > Note that all your virtual environments are deleted if you shut down your server. Hence, it is highly recommended to transform your steps builiding an custom environment into a simple python script.
 
